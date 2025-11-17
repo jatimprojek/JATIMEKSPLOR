@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuis: Tebak Kota - JATIMEKSPLOR</title>
+    <link rel="stylesheet" href="E style.css">
+    
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="logo" href="index.html">JATIMEKSPLOR<span class="accent">.</span></a>
+        </div>
+    </header>
+
+    <div class="quiz-container">
+        <div class="quiz-content">
+            <!-- Welcome Card -->
+            <div id="welcomeCard" class="welcome-card">
+                <h1 class="welcome-title">🏛️ Kuis Jawa Timur 🏛️</h1>
+                <p class="welcome-subtitle">Uji Pengetahuan Anda Tentang Nama Kota Di Jawa Timur!</p>
+                <p class="welcome-desc">
+                    Selamat datang di Kuis Kota Jawa Timur! 🎊<br>
+                    Jawab 10 pertanyaan menarik tentang Kota Jawa Timur.<br>
+                    <strong>Dapatkan sertifikat digital !</strong>
+                </p>
+                <form id="nameForm" onsubmit="startQuiz(event)">
+                    <div class="form-group">
+                        <label class="form-label" for="userName">Nama Lengkap Anda *</label>
+                        <input 
+                            type="text" 
+                            id="userName" 
+                            class="form-input" 
+                            placeholder="Masukkan nama lengkap Anda..." 
+                            required 
+                            minlength="3"
+                        >
+                        <small style="color: #777; margin-top: 0.5rem; display: block;">
+                            * Nama akan digunakan untuk sertifikat reward Anda
+                        </small>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1.2rem;">
+                        🚀 Mulai Kuis!
+                    </button>
+                </form>
+                <div style="text-align: center; margin-top: 1rem;">
+                    <a href="index.html" class="btn btn-ghost" style="color: #8B4513; border-color: #8B4513;">
+                        ← Kembali ke Beranda
+                    </a>
+                </div>
+            </div>
+
+            <!-- Quiz Card -->
+            <div id="quizCard" class="quiz-card">
+                <div class="quiz-header">
+                    <div class="quiz-progress">
+                        <span id="currentQuestion">1</span> / <span id="totalQuestions">10</span>
+                    </div>
+                    <div class="quiz-score">
+                        Skor: <span id="scoreDisplay">0</span>
+                    </div>
+                </div>
+
+                <div class="question-container">
+                    <div class="question-number">Pertanyaan <span id="questionNumberText">1</span></div>
+                    <h2 class="question-text" id="questionText"></h2>
+                </div>
+
+                <div class="options-container" id="optionsContainer"></div>
+
+                <button class="next-btn" id="nextBtn" onclick="nextQuestion()">
+                    Lanjut →
+                </button>
+            </div>
+
+            <!-- Certificate -->
+            <div id="certificateContainer" class="certificate-container">
+                <div class="certificate" id="certificate">
+                    <h1 class="certificate-title">🏆 Sertifikat 🏆</h1>
+                    <p class="certificate-subtitle">Kuis Budaya Jawa Timur</p>
+                    
+                    <p class="certificate-text">Sertifikat ini diberikan kepada:</p>
+                    
+                    <div class="certificate-name" id="certificateName"></div>
+                    
+                    <p class="certificate-text">
+                        Telah berhasil menyelesaikan Kuis Kota Jawa Timur<br>
+                        dan menunjukkan pengetahuan yang luar biasa tentang<br>
+                        Kota Jawa Timur
+                    </p>
+                    
+                    <div class="certificate-score" id="certificateScore"></div>
+                    
+                    <div class="certificate-footer">
+                        <div class="certificate-signature">
+                            <div class="signature-line"></div>
+                            <div class="signature-name">JATIMEKSPLOR</div>
+                            <small>Organisasi</small>
+                        </div>
+                    </div>
+                    
+                    <div class="certificate-date" id="certificateDate"></div>
+                </div>
+
+
+
+                <div class="certificate-buttons">
+                    <button class="btn btn-download" onclick="downloadCertificate()">
+                        📥 Download Sertifikat
+                    </button>
+                    <button class="btn btn-restart" onclick="restartQuiz()">
+                        🔄 Ulangi Kuis
+                    </button>
+                    <a href="index.html" class="btn btn-secondary">
+                        🏠 Kembali ke Beranda
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>© 2025 JATIMEKSPLOR. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const quizType = 'kota';
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="E script.js"></script>
+</body>
+</html>

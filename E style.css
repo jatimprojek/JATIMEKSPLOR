@@ -1,0 +1,633 @@
+/* Reset & Variables */
+:root {
+    --bg: #fefefe;
+    --card: #ffffff;    
+    --text-color: hsl(0, 0%, 0%);
+    --Text-color2: hsl(0, 0%, 100%);
+    --muted: #777777;
+    --accent: #0b92f9;
+    --accent-dark: #09b737;
+    --gradient: linear-gradient(135deg, #03630b, #2980b9);
+}
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg);
+}
+
+    *{ /* Reset Margin & Padding */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+
+    html, body{ /* Set Height Full */
+    height: 100%;
+    }
+
+    body{ /* Gaya Body */
+    font-family: Inter, system-ui, 'Sagoe UI' Roboto, Arial, sans-serif;
+    background-color: var(--bg);
+    color: var(--text-color);
+    -webkit-font-smoothing: antialiased;
+    }
+    .container{
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    }
+
+    /*header*/
+    .site-header{
+    background: linear-gradient(90deg, rgb(0, 0, 0) 0%, rgb(0, 0, 0) 100%);
+border-bottom: 1px solid rgba(15, 23, 42, 0.1);
+    }
+    
+    .header-inner{
+    display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; ;
+    .logo { font-weight: 900; color:var(--Text-color2); text-decoration :none;font-size: 1.25rem;}  
+    .accent { color: var(--accent); } 
+    }
+
+    .nav-list {list-style: none; display: flex; gap: 1rem; align-items: center; }
+    .nav-link {color: var(--Text-color2); text-decoration: none; padding: 0.35rem 0.5rem; border-radius: 6px; }
+    .nav-link:hover { background-color: rgba(255, 255, 255, 0.2); } 
+    .nav-toggle { display: none; cursor: none; border: 0; font-size:1.05rem ;}
+    
+    /* Hero Section */
+.hero {
+    min-height: 100vh;
+    padding: 8rem 0 5rem;
+    text-align: center;
+    background: var(--gradient);
+    color: white;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('./images/banyuwangi.jpeg') center/cover;
+    opacity: 0.2;
+    animation: backgroundSlideshow 15s infinite;
+}
+
+@keyframes backgroundSlideshow {
+    0% { background-image: url('./images/banyuwangi.jpeg'); }
+    20% { background-image: url('./images/malang.jpg'); }
+    40% { background-image: url('./images/surabaya.jpeg'); }
+    60% { background-image: url('./images/batu.webp'); }
+    80% { background-image: url('./images/pacitan.jpg'); }
+    100% { background-image: url('./images/banyuwangi.jpeg'); }
+}
+
+.hero-inner {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-title {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+   
+}
+
+.hero-ctas {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+    
+    .btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--accent);
+    color: white;
+    box-shadow: 0 4px 15px #072c1d;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(3, 189, 74, 0.436);
+}
+
+.btn-secondary {
+    background-color: #ffeb3b;
+    color: var(--text-color);
+    box-shadow: 0 4px 15px rgba(255, 235, 59, 0.3);
+}
+
+.btn-secondary:hover {
+    background-color: #fdd835;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 235, 59, 0.4);
+}
+
+.btn-ghost {
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+}
+
+.btn-ghost:hover {
+    background-color: white;
+    color: var(--accent);
+    transform: translateY(-3px);
+}
+
+    /* sections */
+    .section { padding: 3.5rem 0; }
+    .section-title { 
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+    color: var(--text-color); /* menggunakan warna teks hitam */
+}
+    .feature-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        padding: 2rem 0;
+    }
+
+    .feature-image {
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
+        border-radius: 8px;
+        display: block;
+        margin-bottom: 0.75rem;
+    }
+
+/* Quiz grid: dua kartu berjajar di bawah fitur */
+.quiz-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    align-items: start;
+    margin-top: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .quiz-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+  .quiz-container {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quiz-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(139, 69, 19, 0.1) 35px, rgba(139, 69, 19, 0.1) 70px),
+                repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(210, 105, 30, 0.1) 35px, rgba(210, 105, 30, 0.1) 70px);
+            opacity: 0.5;
+        }
+
+        .quiz-content {
+            position: relative;
+            z-index: 1;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        /* Welcome Card */
+        .welcome-card {
+            max-width: 600px;
+            margin: 2rem auto;
+            background: white;
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border: 5px solid #FFD700;
+            position: relative;
+        }
+
+        .welcome-card::before {
+            content: '🏛️';
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 3rem;
+            background: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .welcome-title {
+            font-size: 2.5rem;
+            color: #8B4513;
+            text-align: center;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .welcome-subtitle {
+            text-align: center;
+            color: #D2691E;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .welcome-desc {
+            text-align: center;
+            color: #555;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: #8B4513;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem;
+            border: 3px solid #D2691E;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #FFD700;
+            box-shadow: 0 0 0 4px rgba(255, 215, 0, 0.2);
+        }
+
+        /* Quiz Card */
+        .quiz-card {
+            max-width: 800px;
+            margin: 2rem auto;
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border: 5px solid #FFD700;
+            display: none;
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid #D2691E;
+        }
+
+        .quiz-progress {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #8B4513;
+        }
+
+        .quiz-score {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #D2691E;
+        }
+
+        .question-container {
+            margin-bottom: 2rem;
+        }
+
+        .question-number {
+            color: #D2691E;
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .question-text {
+            font-size: 1.5rem;
+            color: #8B4513;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            line-height: 1.4;
+        }
+
+        .options-container {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .option-btn {
+            padding: 1.2rem;
+            border: 3px solid #D2691E;
+            background: white;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+            font-weight: 500;
+        }
+
+        .option-btn:hover {
+            background: #FFF8DC;
+            border-color: #FFD700;
+            transform: translateX(10px);
+        }
+
+        .option-btn.selected {
+            background: #D2691E;
+            color: white;
+            border-color: #8B4513;
+        }
+
+        .option-btn.correct {
+            background: #28a745;
+            color: white;
+            border-color: #1e7e34;
+        }
+
+        .option-btn.incorrect {
+            background: #dc3545;
+            color: white;
+            border-color: #bd2130;
+        }
+
+        .option-btn:disabled {
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .next-btn {
+            margin-top: 1.5rem;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, #8B4513, #D2691E);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: none;
+        }
+
+        .next-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(139, 69, 19, 0.4);
+        }
+
+        /* Certificate */
+        .certificate-container {
+            max-width: 900px;
+            margin: 2rem auto;
+            display: none;
+        }
+
+        .certificate {
+            background: white;
+            border: 10px solid #FFD700;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            text-align: center;
+        }
+
+        .certificate::before,
+        .certificate::after {
+            content: '🎖️';
+            position: absolute;
+            font-size: 3rem;
+        }
+
+        .certificate::before {
+            top: 20px;
+            left: 20px;
+        }
+
+        .certificate::after {
+            top: 20px;
+            right: 20px;
+        }
+
+        .certificate-title {
+            font-size: 3rem;
+            color: #8B4513;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .certificate-subtitle {
+            font-size: 1.3rem;
+            color: #D2691E;
+            margin-bottom: 2rem;
+        }
+
+        .certificate-name {
+            font-size: 2.5rem;
+            color: #8B4513;
+            font-weight: 700;
+            margin: 2rem 0;
+            border-bottom: 3px solid #D2691E;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+
+        .certificate-text {
+            font-size: 1.2rem;
+            color: #555;
+            margin: 1.5rem 0;
+            line-height: 1.8;
+        }
+
+        .certificate-score {
+            font-size: 2rem;
+            color: #FFD700;
+            font-weight: 700;
+            background: linear-gradient(135deg, #8B4513, #D2691E);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            display: inline-block;
+            margin: 1.5rem 0;
+        }
+
+        .certificate-footer {
+            margin-top: 3rem;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .certificate-signature {
+            text-align: center;
+        }
+
+        .signature-line {
+            width: 200px;
+            border-top: 2px solid #333;
+            margin: 0 auto 0.5rem;
+        }
+
+        .signature-name {
+            font-weight: 600;
+            color: #8B4513;
+        }
+
+        .certificate-date {
+            color: #777;
+            margin-top: 2rem;
+        }
+
+        .certificate-buttons {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Sticker Preview */
+        .sticker-preview {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .sticker-canvas-container {
+            margin: 1.5rem 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        #stickerCanvas {
+            border: 3px solid #D2691E;
+            border-radius: 15px;
+            max-width: 100%;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .btn-download {
+            background: linear-gradient(135deg, #28a745, #20c997);
+        }
+
+        .btn-sticker {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+        }
+
+        .btn-restart {
+            background: linear-gradient(135deg, #007bff, #6610f2);
+        }
+
+        @media (max-width: 768px) {
+            .welcome-title {
+                font-size: 2rem;
+            }
+
+            .certificate-title {
+                font-size: 2rem;
+            }
+
+            .certificate-name {
+                font-size: 1.8rem;
+            }
+
+            .certificate {
+                padding: 2rem 1rem;
+            }
+
+            .certificate-buttons {
+                flex-direction: column;
+            }
+
+            .certificate-buttons .btn {
+                width: 100%;
+            }
+        }
+
+.feature-description {
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+    /* Footer */
+    .site-footer { background-color: var(--card); padding: 1.25rem 0; text-align: center; border-top: 1px solid rgba(251, 252, 255, 0.1); }
+
+    /* oast */
+    .toast { position: fixed; bottom: 1rem; right: 1rem; background: var(--card); padding: 0.75rem 1rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); border-left:4px solid var(--accent-2); }
+    .hidden { display: none; }
+
+    /* Accessibility */
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }
+    
+    /* Responsive */
+    @media (max-width: 800px) {
+    .nav-list { display: none; flex-direction: column; background-color: var(--card); padding: 0.5rem; position: absolute; top: 64px; right: 1rem; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1); border-radius: 8px; }
+    .nav-toggle { display: inline-block; }
+    .Hero-title { font-size: 1.5rem; }
+    }
+
+    /* quiz */
+    /* ====== CONTAINER ====== */

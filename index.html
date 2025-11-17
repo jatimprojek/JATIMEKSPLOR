@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <Meta name ="description" content="JATIMEKSPLOR adalah platform eksplorasi wisata di Jawa Timur yang menyediakan informasi lengkap tentang destinasi wisata, budaya, kuliner, dan acara lokal. Temukan pengalaman tak terlupakan di Jawa Timur bersama kami!">
+    <title>JATIM — EKSPLOR</title> 
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body> 
+    <!--header-->
+    <header class="site-header">
+     <div class="container header-inner">
+        <a class="logo" href="#home">JATIMEKSPLOR<span class="accent">.</span></a>
+        <nav class="main-nav" aria-label="Main navigation">
+            <button class="nav-toggle" aria-expanded="false" aria-controls="nav-list">☰<span class="sr-only">Menu</span></button>
+             <ul id="nav-list" class="nav-list">
+                 <li><a href="#home" class="nav-link">Home</a></li>
+                 <li><a href="#features" class="nav-link">Fitur</a></li>
+                 <li><a href="#contact" class="nav-link">Kontak</a></li>
+                </ul>
+        </nav>
+     </div>
+    </header>
+
+
+    <!--hero section-->
+    <section id="home" class="hero">
+        <div class="container hero-inner">
+            <h1 class="hero-title">JATIMEKSPLOR</h1>
+            <p class="hero-subtitle">Jelajahi Jawa Timur Dengan Mudah!</p>
+        <div class="hero-ctas">
+    </section>
+
+    <!--features section-->
+    <section id="features" class="section features">
+        <div class="container">
+            <h2 class="section-title">Fitur Unggulan Kami</h2>
+        <div class="features-grid">
+            <article class="card">
+                <img src="images/pacitan.jpg" alt="Destinasi Wisata" class="feature-image" loading="lazy">
+                <h3 class="feature-title">Destinasi Wisata</h3>
+                <p class="feature-description">Temukan tempat-tempat wisata terbaik di Jawa Timur.</p>
+                <a href="C destinasi.html" class="btn btn-primary">Jelajahi</a>
+            </article>
+                
+            <article class="card">
+                <img src="images/kuliner.webp" alt="Kuliner Lokal" class="feature-image" loading="lazy">
+                <h3 class="feature-title">Kuliner Lokal</h3>
+                <p class="feature-description">Jelajahi cita rasa khas Jawa Timur.</p>
+                <a href="C kuliner.html" class="btn btn-primary">Cicipi Sekarang</a>
+            </article>
+                
+            <article class="card">
+                <img src="images/tentang.jpg" alt="Tentang Jawa Timur" class="feature-image" loading="lazy">
+                <h3 class="feature-title">Tentang Jatim</h3>
+                <p class="feature-description">Sejarah Singkat dan profil Jawa Timur.</p>
+                <a href="C tentang.html" class="btn btn-primary">Melihat</a>
+            </article>
+
+        </div>
+        </div>
+    </section>
+
+    <!-- quiz section (dua kartu berjajar di bawah fitur) -->
+    <section id="quiz" class="section quiz">
+        <div class="container">
+            <h2 class="section-title">Jawa Timur Kuis</h2>
+            <div class="quiz-grid">
+                <article class="card">
+                    <h3 class="feature-title">Tebak Kota Jawa Timur</h3>
+                    <p class="feature-description">Uji pengetahuanmu tentang kota-kota di Jawa Timur.</p>
+                    <a href="E quiz-kota.html" class="btn btn-primary">Mainkan</a>
+                </article>
+
+                <article class="card">
+                    <h3 class="feature-title">Tebak Makanan Jawa Timur</h3>
+                    <p class="feature-description">Coba tebak makanan tradisional dan kuliner khas Jawa Timur.</p>
+                    <a href="E quiz-makanan.html" class="btn btn-primary">Mainkan</a>
+                </article>
+            </div>
+        </div>
+    </section>
+    
+    <!--contact section-->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <h2 class="section-title">Kritik, Saran, dan Dukungan</h2>
+          
+            <form id="contactForm" class="contact-form" action="https://formspree.io/f/mgvrvlpd" method="POST">
+                <label for="name">Nama:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="message">Pesan:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+                
+                <button type="submit" class="btn btn-primary">Kirim Pesan</button>
+                <button type="reset" id="ResetBtn">Reset</button>
+            </form>
+        </div>
+    </section>
+
+</main>
+
+    <!--footer-->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>@ 2025 JATIMEKSPLOR. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    </body>
+</html> 

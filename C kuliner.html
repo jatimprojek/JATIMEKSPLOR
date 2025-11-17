@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kuliner Lokal - JATIMEKSPLOR</title>
+  <style>
+    /* Dasar dan font */
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f7f0db; /* krem warm tone, nuansa Jawa */
+      color: #5a3713; /* cokelat tua */
+    }
+
+    /* Header Nuansa Jawa dengan motif batik halus */
+    .site-header {
+      background-color: #2b1800; /* coklat tua pekat */
+      padding: 15px 20px;
+      text-align: left;
+      box-shadow: inset 0 -5px 10px rgba(255, 222, 89, 0.4);
+      position: relative;
+    }
+    .site-header::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 10px;
+      right: 10px;
+      height: 5px;
+      background: repeating-linear-gradient(
+        45deg,
+        #ffd945,
+        #ffd945 5px,
+        #c28f07 5px,
+        #c28f07 10px
+      );
+      border-radius: 5px;
+    }
+    .site-header .logo {
+      font-weight: 900;
+      font-size: 1.8rem;
+      color: #ffd945; /* kuning emas khas batik */
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      user-select: none;
+      font-family: 'Georgia', serif;
+    }
+    .site-header .logo .accent {
+      color: #d2691e; /* oranye coklat kalem */
+    }
+
+    /* Konten utama */
+    main {
+      max-width: 960px;
+      margin: 40px auto 60px auto;
+      padding: 0 20px;
+      background: #fff8e1;
+      border-radius: 15px;
+      box-shadow: 0 8px 15px rgba(101, 67, 33, 0.25);
+      border: 2px solid #d4af37; /* emas keemasan */
+    }
+
+    main h1 {
+      font-size: 2.4rem;
+      margin-bottom: 10px;
+      font-family: 'Georgia', serif;
+      color: #ad6d07; /* coklat emas */
+      text-shadow: 1px 1px 2px #d2b48c;
+    }
+
+    main p.description {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      line-height: 1.4;
+      color: #5a3713;
+      font-style: italic;
+    }
+
+    h2.section-title {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      font-family: 'Georgia', serif;
+      letter-spacing: 0.05em;
+      border-bottom: 3px solid #d4af37;
+      width: max-content;
+      padding-bottom: 5px;
+      color: #8b5e00;
+    }
+
+    /* Container scroll horizontal */
+    .culinary-cards-wrapper {
+      overflow-x: auto;
+      padding-bottom: 10px;
+    }
+
+    /* Kartu Kuliner nuansa Jawa */
+    .culinary-cards {
+      display: flex;
+      gap: 24px;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+    }
+    .card {
+      background-color: #fff8dc;
+      box-shadow: 0 6px 15px rgba(150, 111, 42, 0.45);
+      border-radius: 18px;
+      padding: 20px 15px;
+      width: 220px;
+      box-sizing: border-box;
+      text-align: center;
+      font-family: 'Georgia', serif;
+      color: #5a3713;
+      border: 2px solid #c2952f;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-width 0.3s ease;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 25px rgba(165, 116, 46, 0.7);
+    }
+    /* Kartu terpilih ditebalkan border */
+    .card.selected {
+      border-width: 5px;
+      font-weight: 700;
+      box-shadow: 0 12px 30px rgba(165, 116, 46, 0.8);
+    }
+    .card img {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 15px;
+      height: 140px;
+      object-fit: cover;
+      border: 1.5px solid #c2952f;
+      box-shadow: inset 0 0 8px #e6d3a3;
+    }
+    .card p {
+      font-size: 1.05rem;
+      line-height: 1.4;
+      margin: 0;
+      letter-spacing: 0.02em;
+      text-shadow: 0 0 2px #ddb74f99;
+    }
+
+    /* Tombol Kembali */
+    .back-button {
+      display: block;
+      margin: 40px auto 30px auto;
+      padding: 16px 36px;
+      background: linear-gradient(135deg, #d3a625 0%, #7f5317 100%);
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.2rem;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      box-shadow:
+        0 4px 6px rgba(0, 0, 0, 0.3),
+        inset 0 -3px 5px rgba(255, 255, 255, 0.2);
+      font-family: 'Georgia', serif;
+      transition: background 0.3s ease;
+      user-select: none;
+      text-align: center;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+      width: fit-content;
+      min-width: 220px;
+    }
+    .back-button:hover,
+    .back-button:focus {
+      background: linear-gradient(135deg, #b98916 0%, #5e3d0f 100%);
+      outline: none;
+      box-shadow:
+        0 6px 10px rgba(0,0,0,0.4),
+        inset 0 -4px 8px rgba(255,255,255,0.3);
+    }
+
+    /* Footer */
+    footer {
+      max-width: 960px;
+      margin: 0 auto 20px auto;
+      padding: 15px 20px;
+      text-align: right;
+      font-size: 0.9rem;
+      color: #8b5e00;
+      font-family: 'Georgia', serif;
+      letter-spacing: 0.05em;
+      border-top: 2px solid #d4af37;
+    }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+      .culinary-cards-wrapper {
+        padding-bottom: 15px;
+      }
+      .card {
+        width: 180px;
+      }
+      footer {
+        text-align: center;
+      }
+      main {
+        margin: 20px 15px 40px 15px;
+      }
+    }
+
+    /* Search box styling */
+    .search-container {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+    #search {
+      width: 60%;
+      font-size: 1.1rem;
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: 2px solid #c2952f;
+      box-shadow: inset 1px 1px 5px #ffe680;
+      font-family: 'Georgia', serif;
+      transition: border-color 0.3s ease;
+    }
+    #search:focus {
+      outline: none;
+      border-color: #8b5e00;
+      box-shadow: 0 0 10px #d4af37;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner container">
+      <a class="logo" href="index.html">JATIMEKSPLOR<span class="accent">.</span></a>
+    </div>
+  </header>
+
+  <main>
+    <h1>Kuliner Lokal</h1>
+    <p class="description">Halaman ini berisi informasi tentang kuliner khas Jawa Timur.</p>
+
+    <div class="search-container">
+      <input type="text" id="search" placeholder="Cari berdasarkan nama kota, misal 'Madiun'" aria-label="Cari kuliner berdasarkan nama kota" />
+    </div>
+
+    <section>
+      <h2 class="section-title">Kuliner Khas Jawa Timur</h2>
+      <div class="culinary-cards-wrapper">
+        <div class="culinary-cards" id="culinaryCards">
+          <div class="card" data-kota="Surabaya" tabindex="0" role="button" aria-label="Kuliner Rawon, Sup daging hitam khas Surabaya">
+            <td><img src="kulinerr/rawon.webp" alt="Rawon" />
+<p>Rawon – Sup daging berkuah hitam khas Surabaya, kaya rempah dan kluwek</p>
+          </div>
+<div class="card" data-kota="Surabaya" tabindex="0" role="button" aria-label="Kuliner Pecel Madiun, Sayuran dengan sambal kacang">
+            <td><img src="kulinerr/cingur.webp" alt="Rawon" />
+<p>Rujak Cingur – Campuran sayur, buah, dan cingur dengan bumbu petis khas Surabaya</p>          </div>
+          <div class="card" data-kota="Malang" tabindex="0" role="button" aria-label="Kuliner Bakso Malang">
+            <td><img src="kulinerr/balap.webp" alt="Rawon" />
+<p>Lontong Balap – Lontong dengan tauge, lentho, dan kuah gurih khas Surabaya</p>
+          </div>
+          <div class="card" data-kota="Surabaya" tabindex="0" role="button" aria-label="Kuliner Lontong Balap Surabaya">
+            <td><img src="kulinerr/tek.webp" alt="Rawon" />
+<p>Tahu Tek – Tahu goreng dengan lontong, kentang, dan bumbu kacang petis khas Surabaya</p>
+          </div>
+          <div class="card" data-kota="Madiun" tabindex="0" role="button" aria-label="Pecel Madiun, Sayuran dengan sambal kacang">
+            <td><img src="kulinerr/pecel.webp" alt="Rawon" />
+<p>Pecel Madiun – Sayuran rebus dengan sambal kacang pedas khas Madiun</p>
+          </div>
+           <div class="card" data-kota="Ponorogo" tabindex="0" role="button" aria-label="Kuliner Sate Ayam Ponorogo">
+            <td><img src="kulinerr/sate.webp" alt="Rawon" />
+<p>Sate Ayam Ponorogo – Sate ayam berbumbu kacang kental khas Ponorogo</p>
+          </div>
+           <div class="card" data-kota="Gresik" tabindex="0" role="button" aria-label="Kuliner Nasi Krawu Gresik">
+            <td><img src="kulinerr/krawu.webp" alt="Rawon" />
+<p>Nasi Krawu – Nasi dengan daging suwir dan sambal khas Gresik</p>
+          </div>
+           <div class="card" data-kota="Lamongan" tabindex="0" role="button" aria-label="Kuliner Soto Lamongan">
+            <td><img src="kulinerr/soto.webp" alt="Rawon" />
+<p>Soto Lamongan – Soto ayam berkuah kuning dengan koya khas Lamongan</p>
+          </div>
+           <div class="card" data-kota="Kediri" tabindex="0" role="button" aria-label="Kuliner Tahu Takwa Kediri">
+            <td><img src="kulinerr/takwa.webp" alt="Rawon" />
+<p>Tahu Takwa – Tahu kuning padat dan gurih khas Kediri</p>
+          </div>
+           <div class="card" data-kota="Tulungagung" tabindex="0" role="button" aria-label="Kuliner Lontong Balap Tulungagung">
+            <td><img src="kulinerr/lodho.webp" alt="Rawon" />
+<p>Lodho Ayam – Ayam kampung berbumbu santan pedas khas Tulungagung</p>
+          </div>
+           <div class="card" data-kota="Trenggalek" tabindex="0" role="button" aria-label="Kuliner Sego Gegok Trenggalek">
+            <td><img src="kulinerr/gegok.webp" alt="Rawon" />
+<p>Sego Gegok – Nasi bungkus dengan teri pedas khas Trenggalek</p>
+          </div>
+           <div class="card" data-kota="Blitar" tabindex="0" role="button" aria-label="Kuliner Nasi Pecel Blitar">
+            <td><img src="kulinerr/blitar.webp" alt="Rawon" />
+<p>Nasi Pecel Blitar – Pecel dengan tambahan rempeyek khas Blitar</p>
+          </div>
+           <div class="card" data-kota="Malang" tabindex="0" role="button" aria-label="Kuliner Bakso Malang">
+            <td><img src="kulinerr/bakso.webp" alt="Rawon" />
+<p>Bakso Malang – Bakso lengkap dengan tahu, siomay, dan pangsit khas Malang</p>
+          </div>
+           <div class="card" data-kota="Pasuruan" tabindex="0" role="button" aria-label="Kuliner Sate Komoh Pasuruan">
+            <td><img src="kulinerr/komoh.webp" alt="Rawon" />
+<p>Sate Komoh – Sate daging sapi berbumbu rempah khas Pasuruan</p>
+          </div>
+           <div class="card" data-kota="Sidoarjo" tabindex="0" role="button" aria-label="Kuliner Kupang Lontong Sidoarjo">
+            <td><img src="kulinerr/kupang.webp" alt="Rawon" />
+<p>Kupang Lontong – Kupang laut dengan lontong dan sambal petis khas Sidoarjo</p>
+          </div>
+           <div class="card" data-kota="Bangkalan" tabindex="0" role="button" aria-label="Kuliner Bebek Sinjai Bangkalan">
+            <td><img src="kulinerr/bebek.webp" alt="Rawon" />
+<p>Bebek Sinjay – Bebek goreng renyah dengan sambal mangga khas Bangkalan</p>
+          </div>
+           <div class="card" data-kota="Sampang" tabindex="0" role="button" aria-label="Kuliner Kaldu Kokot Sampang">
+            <td><img src="kulinerr/kokot.webp" alt="Rawon" />
+<p>Kaldu Kokot – Sup kaki sapi dengan kacang hijau khas Sampang</p>
+          </div>
+           <div class="card" data-kota="Pamekasan" tabindex="0" role="button" aria-label="Kuliner Soto Madura Pamekasan">
+            <td><img src="kulinerr/madura.webp" alt="Rawon" />
+<p>Soto Madura – Soto daging dengan kuah bening dan rempah khas Pamekasan</p>
+          </div>
+           <div class="card" data-kota="Sumenep" tabindex="0" role="button" aria-label="Kuliner Tajin Sobih Sumenep">
+            <td><img src="kulinerr/tajin.webp" alt="Rawon" />
+<p>Tajin Sobih – Bubur manis dari ketan dan santan khas Sumenep</p>
+          </div>
+           <div class="card" data-kota="Banyuwangi" tabindex="0" role="button" aria-label="Kuliner Rujak Soto Banyuwangi">
+            <td><img src="kulinerr/rujak.webp" alt="Rawon" />
+<p>Rujak Soto – Perpaduan rujak dan soto dalam satu mangkuk khas Banyuwangi</p>
+          </div>
+           <div class="card" data-kota="Probolinggo" tabindex="0" role="button" aria-label="Kuliner Kare Rajungan Probolinggo">
+            <td><img src="kulinerr/kare.webp" alt="Rawon" />
+<p>Kare Rajungan – Rajungan dimasak kuah santan khas Probolinggo</p>
+          </div>
+           <div class="card" data-kota="Situbondo" tabindex="0" role="button" aria-label="Kuliner Sate Lalat Situbondo">
+            <td><img src="kulinerr/lalat.webp" alt="Rawon" />
+<p>Sate Lalat – Sate mini dari daging sapi khas Situbondo</p>
+          </div>
+           <div class="card" data-kota="Bondowoso" tabindex="0" role="button" aria-label="Kuliner Tape Bondowoso">
+            <td><img src="kulinerr/tape.webp" alt="Rawon" />
+<p>Tape Bondowoso – Tape singkong manis dan legit khas Bondowoso</p>
+          </div>
+           <div class="card" data-kota="Jember" tabindex="0" role="button" aria-label="Kuliner Suwar-suwir Jember">
+            <td><img src="kulinerr/suwar.webp" alt="Rawon" />
+<p>Suwar-suwir – Manisan tape kenyal dan manis khas Jember</p>
+          </div>
+           <div class="card" data-kota="Bojonegoro" tabindex="0" role="button" aria-label="Kuliner Ledre Bojonegoro">
+            <td><img src="kulinerr/ledre.webp" alt="Rawon" />
+<p>Ledre – Kue gulung dari pisang dan tepung khas Bojonegoro</p>
+          </div>
+           <div class="card" data-kota="Mojokerto" tabindex="0" role="button" aria-label="Kuliner Nasi Becek Mojokerto">
+            <td><img src="kulinerr/becek.webp" alt="Rawon" />
+<p>Nasi Becek – Nasi dengan kuah gulai dan daging khas Mojokerto</p>
+          </div>
+           <div class="card" data-kota="Bangkalan" tabindex="0" role="button" aria-label="Kuliner Nasi Serpang Bangkalan">
+            <td><img src="kulinerr/serpang.webp" alt="Rawon" />
+<p>Nasi Serpang – Nasi campur dengan lauk khas Bangkalan</p>
+          </div>
+           <div class="card" data-kota="Pacitan" tabindex="0" role="button" aria-label="Kuliner Nasi Jagung Pacitan">
+            <td><img src="kulinerr/jagung.webp" alt="Rawon" />
+<p>Nasi Jagung – Nasi dari jagung tumbuk khas Pacitan</p>
+          </div>
+           <div class="card" data-kota="Magetan" tabindex="0" role="button" aria-label="Kuliner Nasi Empok Magetan">
+            <td><img src="kulinerr/empok.webp" alt="Rawon" />
+<p>Nasi Empok – Nasi jagung dan beras khas Magetan</p>
+          </div>
+           <div class="card" data-kota="Ngawi" tabindex="0" role="button" aria-label="Kuliner Tepo Tahu Ngawi">
+            <td><img src="kulinerr/tepo.webp" alt="Rawon" />
+<p>Tepo Tahu – Tahu goreng dengan tepo dan sambal khas Ngawi</p>
+          </div>
+           <div class="card" data-kota="Nganjuk" tabindex="0" role="button" aria-label="Kuliner Kripik Tempe Nganjuk">
+            <td><img src="kulinerr/tempe.webp" alt="Rawon" />
+<p>Kripik Tempe – Tempe goreng tipis dan renyah khas Nganjuk</p>
+          </div>
+           <div class="card" data-kota="Lumajang" tabindex="0" role="button" aria-label="Kuliner Nasi Punel Lumajang">
+            <td><img src="kulinerr/punel.webp" alt="Rawon" />
+<p>Nasi Punel – Nasi pulen dengan lauk khas Lumajang</p>
+          </div>
+           <div class="card" data-kota="Jombang" tabindex="0" role="button" aria-label="Kuliner Nasi Gluduk Jombang">
+            <td><img src="kulinerr/guduk.webp" alt="Rawon" />
+<p>Nasi Gluduk – Nasi campur dengan lauk khas Jombang</p>
+          </div>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <button class="back-button" onclick="history.back()">Kembali ke Beranda</button>
+  </main>
+
+  <footer>
+    &copy; 2025 JATIMEKSPLOR. All rights reserved.
+  </footer>
+
+  <script>
+    const searchInput = document.getElementById('search');
+    const culinaryCards = document.getElementById('culinaryCards');
+    const cards = Array.from(culinaryCards.children);
+
+    // Fungsi untuk update selected card yang pertama cocok dicari atau none
+    function updateSelectedCard(searchedKota) {
+      let foundSelected = false;
+      cards.forEach(card => {
+        // Cocokkan kota
+        if (searchedKota && card.dataset.kota.toLowerCase().includes(searchedKota)) {
+          if (!foundSelected) {
+            card.classList.add('selected');
+            foundSelected = true;
+          } else {
+            card.classList.remove('selected');
+          }
+        } else {
+          card.classList.remove('selected');
+        }
+      });
+      
+      // Jika tidak ada yang cocok, hapus semua selected
+      if (!foundSelected) {
+        cards.forEach(card => card.classList.remove('selected'));
+      }
+    }
+
+    searchInput.addEventListener('input', function() {
+      const query = this.value.toLowerCase().trim();
+
+      if (!query) {
+        culinaryCards.innerHTML = '';
+        cards.forEach(card => {
+          culinaryCards.appendChild(card);
+          card.classList.remove('selected'); // hilangkan penandaan selected
+        });
+        return;
+      }
+
+      const kotaCari = query.replace(/kuliner\s+/i, '');
+      const matched = cards.filter(card => card.dataset.kota.toLowerCase().includes(kotaCari));
+      const notMatched = cards.filter(card => !card.dataset.kota.toLowerCase().includes(kotaCari));
+      culinaryCards.innerHTML = '';
+      matched.forEach(card => culinaryCards.appendChild(card));
+      notMatched.forEach(card => culinaryCards.appendChild(card));
+
+      updateSelectedCard(kotaCari);
+    });
+
+    // Saat laman dimuat langsung beri penegasan "selected" di semua (utamakan yang atas)
+    window.addEventListener('DOMContentLoaded', () => {
+      // Tandai kartu pertama sebagai selected (misal yang pertama)
+      if (cards.length > 0) {
+        cards[0].classList.add('selected');
+      }
+    });
+  </script>
+</body>
+</html>
